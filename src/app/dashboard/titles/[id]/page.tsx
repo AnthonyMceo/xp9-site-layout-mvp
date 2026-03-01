@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { auth } from "@clerk/nextjs/server";
 
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
@@ -8,17 +7,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { computePdfEnabled } from "@/lib/subscription-rules";
 import { SubscribeButton } from "@/app/dashboard/titles/[id]/subscribe-button";
+import { getMockUser } from "@/lib/mock-user";
 
 export default async function TitleDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const { userId } = await auth();
-  if (!userId) notFound();
-
-  const user = await prisma.user.findUnique({ where: { clerkUserId: userId } });
-  if (!user) notFound();
+  const user = await getMockUser();
 
   const title = await prisma.title.findFirst({
     where: { id: params.id, userId: user.id },

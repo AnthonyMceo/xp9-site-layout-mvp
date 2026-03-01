@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { auth, clerkClient } from "@clerk/nextjs/server";
 import { z } from "zod";
 
 import { prisma } from "@/lib/prisma";
 import { generatePlaceholderPdf } from "@/lib/pdf/generate-placeholder-pdf";
 import { r2UploadPublic } from "@/lib/r2";
 import { slugify, withSlugSuffix } from "@/lib/slug";
+import { getMockUser } from "@/lib/mock-user";
 
 const TitleCreateSchema = z.object({
   titleName: z.string().min(1).max(140),
@@ -14,32 +14,8 @@ const TitleCreateSchema = z.object({
   coverUrl: z.string().url().optional(),
 });
 
-async function getOrCreateUser(clerkUserId: string) {
-  const existing = await prisma.user.findUnique({ where: { clerkUserId } });
-  if (existing) return existing;
-
-  const client = await clerkClient();
-  const user = await client.users.getUser(clerkUserId);
-  const email =
-    user.primaryEmailAddress?.emailAddress ?? user.emailAddresses?.[0]?.emailAddress;
-  if (!email) {
-    throw new Error("Clerk user is missing an email address.");
-  }
-
-  return prisma.user.create({
-    data: {
-      clerkUserId,
-      email,
-    },
-  });
-}
-
 export async function GET() {
-  const { userId } = await auth();
-  if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-  const user = await prisma.user.findUnique({ where: { clerkUserId: userId } });
-  if (!user) return NextResponse.json({ titles: [] });
+  const user = await getMockUser();
 
   const titles = await prisma.title.findMany({
     where: { userId: user.id },
@@ -62,9 +38,6 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const { userId } = await auth();
-  if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
   const body = await req.json().catch(() => null);
   const parsed = TitleCreateSchema.safeParse(body);
   if (!parsed.success) {
@@ -77,7 +50,7 @@ export async function POST(req: Request) {
   const { titleName, authorName, summary } = parsed.data;
   const coverUrl = parsed.data.coverUrl ?? "/cover-placeholder.svg";
 
-  const user = await getOrCreateUser(userId);
+  const user = await getMockUser();
 
   const uuid = crypto.randomUUID();
   const slugBase = slugify(titleName);

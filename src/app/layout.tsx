@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = Inter({
   variable: "--font-geist-sans",
@@ -24,20 +23,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-dvh antialiased`}
       >
-        {publishableKey ? (
-          <ClerkProvider publishableKey={publishableKey}>
-            {children}
-          </ClerkProvider>
-        ) : (
-          children
-        )}
+        {children}
       </body>
     </html>
   );

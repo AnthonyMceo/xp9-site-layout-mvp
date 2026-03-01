@@ -1,8 +1,8 @@
-import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 import { MaxWidthWrapper } from "@/components/max-width-wrapper";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +34,7 @@ export default function DashboardLayout({
               ))}
             </nav>
           </div>
-          <UserButton afterSignOutUrl="/" />
+          <Badge variant="secondary">Mock user</Badge>
         </MaxWidthWrapper>
       </header>
       <main>

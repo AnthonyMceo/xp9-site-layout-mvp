@@ -1,29 +1,14 @@
 import Link from "next/link";
-import { auth } from "@clerk/nextjs/server";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/badge";
+import { getMockUser } from "@/lib/mock-user";
 
 export default function DashboardTitlesPage() {
   const TitlesList = async () => {
-    const { userId } = await auth();
-    if (!userId) return null;
-
-    const user = await prisma.user.findUnique({ where: { clerkUserId: userId } });
-    if (!user) {
-      return (
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">No titles yet</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            Create your first title to generate a public page and placeholder PDF.
-          </CardContent>
-        </Card>
-      );
-    }
+    const user = await getMockUser();
 
     const titles = await prisma.title.findMany({
       where: { userId: user.id },

@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { auth } from "@clerk/nextjs/server";
 
 import { prisma } from "@/lib/prisma";
 import { getStripe } from "@/lib/stripe";
+import { getMockUser } from "@/lib/mock-user";
 
 const BodySchema = z.object({
   titleId: z.string().uuid(),
@@ -18,9 +18,6 @@ function getBaseUrl() {
 }
 
 export async function POST(req: Request) {
-  const { userId } = await auth();
-  if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
   const body = await req.json().catch(() => null);
   const parsed = BodySchema.safeParse(body);
   if (!parsed.success) {
@@ -35,8 +32,7 @@ export async function POST(req: Request) {
   const baseUrl = getBaseUrl();
   const stripe = getStripe();
 
-  const user = await prisma.user.findUnique({ where: { clerkUserId: userId } });
-  if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+  const user = await getMockUser();
 
   const title = await prisma.title.findFirst({
     where: { id: parsed.data.titleId, userId: user.id },
@@ -55,7 +51,7 @@ export async function POST(req: Request) {
     (await (async () => {
       const customer = await stripe.customers.create({
         email: user.email,
-        metadata: { clerkUserId: userId, userDbId: user.id },
+        metadata: { userDbId: user.id },
       });
       await prisma.subscription.update({
         where: { titleId: title.id },
