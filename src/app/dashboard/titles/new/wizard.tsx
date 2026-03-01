@@ -52,7 +52,7 @@ export function NewTitleWizard() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           ...parsed.data,
-          coverUrl: new URL("/cover-placeholder.svg", window.location.origin).toString(),
+          coverUrl: new URL("/cover-default.svg", window.location.origin).toString(),
         }),
       });
 
@@ -70,7 +70,8 @@ export function NewTitleWizard() {
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">New title</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Create a title to generate a public page and a placeholder PDF.
+            Create a title to publish a public book page and manage access to
+            downloads.
           </p>
         </div>
         <Badge variant="secondary">
@@ -127,17 +128,17 @@ export function NewTitleWizard() {
             <div className="grid gap-4 sm:grid-cols-2 sm:items-start">
               <div className="space-y-2">
                 <div className="text-sm text-muted-foreground">
-                  Upload will be added later. For now we’ll use a placeholder
-                  cover image.
+                  Add a cover to your book page. A default cover is included
+                  with every title.
                 </div>
                 <div className="text-xs text-muted-foreground">
-                  Stored as a cover file record and shown on the public page.
+                  This will be shown on your public page.
                 </div>
               </div>
               <div className="overflow-hidden rounded-lg border bg-background">
                 <Image
-                  src="/cover-placeholder.svg"
-                  alt="Placeholder cover"
+                  src="/cover-default.svg"
+                  alt="Book cover"
                   width={600}
                   height={900}
                   className="h-auto w-full"
@@ -164,9 +165,8 @@ export function NewTitleWizard() {
                 </div>
               </div>
               <div className="text-sm text-muted-foreground">
-                We’ll generate a UUID, create a placeholder PDF (`pdf-lib`), upload
-                it to R2 (or fall back to an API download), and create a public
-                slug.
+                We’ll publish your public book page and prepare the downloadable
+                file under this title’s subscription.
               </div>
             </div>
           )}

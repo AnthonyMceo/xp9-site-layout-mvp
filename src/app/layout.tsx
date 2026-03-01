@@ -15,7 +15,7 @@ const geistMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "XP9 Publishing Platform",
   description:
-    "Create titles, share public book pages, and deliver placeholder PDFs while the full AI engine is being built.",
+    "Create titles, publish professional book pages, and manage subscription-backed access to downloads.",
 };
 
 export default function RootLayout({

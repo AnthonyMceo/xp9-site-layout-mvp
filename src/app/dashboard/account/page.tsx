@@ -12,11 +12,10 @@ export default function AccountPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Account placeholder</CardTitle>
+          <CardTitle className="text-base">Account settings</CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground">
-          Clerk profile settings can be embedded here once you decide the exact
-          UX.
+          Manage your account details and preferences.
         </CardContent>
       </Card>
     </div>

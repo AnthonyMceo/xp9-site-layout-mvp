@@ -12,7 +12,7 @@ import { ShareButtons } from "@/app/(marketing)/book/[slug]/share-buttons";
 export const dynamic = "force-dynamic";
 
 function Cover({ coverUrl, title }: { coverUrl: string | null; title: string }) {
-  const src = coverUrl || "/cover-placeholder.svg";
+  const src = coverUrl || "/cover-default.svg";
   const isExternal = /^https?:\/\//.test(src);
 
   return (
@@ -50,9 +50,9 @@ export default async function PublicBookPage({
   const pdfEnabled = subscription ? computePdfEnabled(subscription.status) : false;
 
   const lookInside = [
-    "This is a placeholder Look Inside preview for MVP validation.",
-    "The real AI book generator is not enabled yet.",
-    "Your public page, subscription rules, and download entitlement are what we’re validating now.",
+    "Explore a preview of the title, formatted as a clean, readable excerpt.",
+    "This section is designed for quick scanning and shareable discovery.",
+    "Subscribers can access the downloadable file directly from this page.",
   ];
 
   return (
@@ -79,7 +79,7 @@ export default async function PublicBookPage({
                 </a>
               </Button>
               <Button type="button" className="w-full" variant="outline" disabled>
-                Buy (coming soon)
+                Buy
               </Button>
             </CardContent>
           </Card>
@@ -89,7 +89,6 @@ export default async function PublicBookPage({
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="secondary">{status}</Badge>
-              <Badge variant="outline">ID: {title.id}</Badge>
             </div>
             <h1 className="text-balance text-4xl font-semibold tracking-tight">
               {title.titleName}

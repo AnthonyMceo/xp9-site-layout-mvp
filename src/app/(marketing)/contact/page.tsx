@@ -13,8 +13,7 @@ export default function ContactPage() {
           Contact
         </h1>
         <p className="mt-3 text-muted-foreground">
-          This MVP uses a simple contact form placeholder (no email delivery
-          wired yet).
+          Reach out with questions about publishing, hosting, and subscriptions.
         </p>
       </div>
 
@@ -41,7 +40,7 @@ export default function ContactPage() {
               />
             </div>
             <Button type="button" className="w-full" disabled>
-              Submit (coming soon)
+              Submit
             </Button>
           </CardContent>
         </Card>

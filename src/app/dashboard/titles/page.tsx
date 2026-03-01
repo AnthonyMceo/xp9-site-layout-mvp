@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/badge";
-import { getMockUser } from "@/lib/mock-user";
+import { getDefaultUser } from "@/lib/default-user";
 
 export default function DashboardTitlesPage() {
   const TitlesList = async () => {
-    const user = await getMockUser();
+    const user = await getDefaultUser();
 
     const titles = await prisma.title.findMany({
       where: { userId: user.id },
@@ -23,7 +23,8 @@ export default function DashboardTitlesPage() {
             <CardTitle className="text-base">No titles yet</CardTitle>
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground">
-            Create your first title to generate a public page and placeholder PDF.
+            Create your first title to publish a public book page and manage
+            access to downloads.
           </CardContent>
         </Card>
       );

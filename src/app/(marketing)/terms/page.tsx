@@ -9,19 +9,19 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         <p className="mt-3 text-muted-foreground">
-          Placeholder terms for the MVP. Replace with your finalized legal copy.
+          These terms govern access to the XP9 platform and services.
         </p>
       </div>
 
       <div className="mx-auto mt-10 max-w-3xl">
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">MVP disclaimer</CardTitle>
+            <CardTitle className="text-base">Service terms</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
             <p>
-              XP9 currently generates placeholder PDFs and public book pages to
-              validate product flow. The AI book generator is not included yet.
+              XP9 provides infrastructure to host public book pages and manage
+              access to downloadable files under per-title subscriptions.
             </p>
             <p>
               Billing is per-title and may restrict access to downloads if a

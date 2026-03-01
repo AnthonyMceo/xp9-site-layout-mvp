@@ -6,17 +6,17 @@ export default function BillingPage() {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Billing</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Stripe subscription management will be wired next.
+          Subscriptions are managed per title.
         </p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Billing portal placeholder</CardTitle>
+          <CardTitle className="text-base">Per-title subscriptions</CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground">
-          This MVP will create a Stripe subscription per title (30-day trial) and
-          apply grace period rules to public pages + PDF access.
+          Start or manage a subscription from each title’s page. Active
+          subscriptions keep your listing live and downloads available.
         </CardContent>
       </Card>
     </div>

@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { MaxWidthWrapper } from "@/components/max-width-wrapper";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +33,9 @@ export default function DashboardLayout({
               ))}
             </nav>
           </div>
-          <Badge variant="secondary">Mock user</Badge>
+          <Button asChild variant="outline" size="sm">
+            <Link href="/dashboard/account">Account</Link>
+          </Button>
         </MaxWidthWrapper>
       </header>
       <main>

@@ -3,12 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const faqs = [
   {
-    q: "Does XP9 generate real books yet?",
-    a: "Not in this MVP. We generate a uniquely identified placeholder PDF to validate the flow end-to-end.",
+    q: "What is XP9?",
+    a: "XP9 is a publishing platform for hosting professional book pages and managing per-title subscriptions for listings and downloads.",
   },
   {
-    q: "What happens if a subscription is unpaid?",
-    a: "The public page can remain visible but the PDF download link is disabled. After the grace period, the public page is hidden.",
+    q: "How does per-title billing work?",
+    a: "Each title is hosted independently. Activate a subscription per title to keep its public page and downloadable file live.",
   },
   {
     q: "Is pricing per user or per title?",
@@ -17,6 +17,10 @@ const faqs = [
   {
     q: "Can I share my book page publicly?",
     a: "Yes. Each title gets a shareable `/book/[slug]` page with cover, summary, and look-inside preview.",
+  },
+  {
+    q: "What happens if a subscription is inactive?",
+    a: "Access to downloads may be restricted until the subscription is active again.",
   },
 ];
 
@@ -28,7 +32,7 @@ export default function FaqPage() {
           FAQ
         </h1>
         <p className="mt-3 text-muted-foreground">
-          Quick answers about how the MVP works.
+          Quick answers about publishing and hosting titles on XP9.
         </p>
       </div>
 

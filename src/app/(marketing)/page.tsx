@@ -10,26 +10,23 @@ export default function HomePage() {
       <section className="border-b bg-gradient-to-b from-background to-muted/20">
         <MaxWidthWrapper className="py-16 sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center rounded-full border bg-background px-3 py-1 text-xs text-muted-foreground">
-              MVP preview: placeholder PDFs + public book pages
-            </div>
             <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-              Launch public book pages today. Generate the real books later.
+              Launch your book publicly in minutes.
             </h1>
             <p className="mt-4 text-pretty text-lg text-muted-foreground">
-              XP9 validates the end-to-end flow: create a title, get a shareable
-              public link, and deliver a uniquely identified placeholder PDF.
+              Create a professional book page with cover, summary, preview, and
+              managed file access — all under your own title subscription.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild size="lg">
-                <Link href="/signup">Create account</Link>
+                <Link href="/dashboard/titles/new">Create your first title</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/how-it-works">How it works</Link>
+                <Link href="/how-it-works">See how it works</Link>
               </Button>
             </div>
             <div className="mt-4 text-sm text-muted-foreground">
-              $10/month per active title • 30-day free trial
+              $10 per active title · 30-day free trial
             </div>
           </div>
         </MaxWidthWrapper>
@@ -37,32 +34,37 @@ export default function HomePage() {
 
       <section>
         <MaxWidthWrapper className="py-14">
+          <div className="mx-auto mb-10 max-w-3xl text-center">
+            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+              Professional book pages, without the overhead.
+            </h2>
+          </div>
           <div className="grid gap-6 md:grid-cols-3">
             <Card>
               <CardHeader>
-                <CardTitle>Title creation flow</CardTitle>
+                <CardTitle>Title creation</CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Title, author, summary, cover placeholder, confirm. We generate
-                a UUID + public slug automatically.
+                Create a title with name, author, description, and cover.
+                Instantly generate a live public page.
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Shareable public pages</CardTitle>
+                <CardTitle>Shareable public links</CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Public `/book/[slug]` pages show cover, summary, look-inside,
-                and a controlled PDF link.
+                Each title receives a permanent public URL you can share
+                anywhere.
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Subscriptions per title</CardTitle>
+                <CardTitle>Managed file access</CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Stripe trials + grace periods. If unpaid, the public page stays
-                visible while PDF access is disabled.
+                Attach a downloadable book file to your title and control access
+                through subscription status.
               </CardContent>
             </Card>
           </div>
@@ -74,32 +76,31 @@ export default function HomePage() {
           <div className="grid gap-10 md:grid-cols-2 md:items-center">
             <div>
               <h2 className="text-2xl font-semibold tracking-tight">
-                Validate demand before building the generator.
+                Built for modern independent publishers.
               </h2>
               <p className="mt-3 text-muted-foreground">
-                The AI book engine is intentionally out of scope for this MVP.
-                Instead, we prove the customer journey, billing rules, and
-                product pages end-to-end.
+                XP9 provides the infrastructure to host and manage book titles
+                professionally. Launch public book pages today. Expand into full
+                publishing workflows when ready.
               </p>
               <div className="mt-6 flex gap-3">
                 <Button asChild>
-                  <Link href="/pricing">See pricing</Link>
+                  <Link href="/pricing">View pricing</Link>
                 </Button>
                 <Button asChild variant="outline">
-                  <Link href="/faq">Read FAQ</Link>
+                  <Link href="/signup">Create account</Link>
                 </Button>
               </div>
             </div>
-            <Card className="border-dashed">
+            <Card>
               <CardHeader>
-                <CardTitle>What you’ll get in the MVP</CardTitle>
+                <CardTitle>Everything your listing needs</CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                - Accounts (email + Google)
-                <br />- Dashboard for titles
-                <br />- Mock PDFs (`pdf-lib`) stored in R2
-                <br />- Public product pages + sitemap
-                <br />- Stripe subscriptions per title
+                - Public book page with a clean layout
+                <br />- Cover, summary, and preview section
+                <br />- Shareable link you can post anywhere
+                <br />- Subscription-backed access to downloads
               </CardContent>
             </Card>
           </div>

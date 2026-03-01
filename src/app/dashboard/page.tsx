@@ -20,7 +20,8 @@ export default function DashboardHomePage() {
           </CardHeader>
           <CardContent className="flex items-center justify-between gap-4">
             <div className="text-sm text-muted-foreground">
-              Create a title to generate a public link and a placeholder PDF.
+              Create a title to publish a public page and manage access to
+              downloads.
             </div>
             <Button asChild>
               <Link href="/dashboard/titles/new">New title</Link>

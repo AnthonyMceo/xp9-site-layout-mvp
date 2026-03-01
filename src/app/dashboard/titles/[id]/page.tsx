@@ -7,14 +7,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { computePdfEnabled } from "@/lib/subscription-rules";
 import { SubscribeButton } from "@/app/dashboard/titles/[id]/subscribe-button";
-import { getMockUser } from "@/lib/mock-user";
+import { getDefaultUser } from "@/lib/default-user";
 
 export default async function TitleDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const user = await getMockUser();
+  const user = await getDefaultUser();
 
   const title = await prisma.title.findFirst({
     where: { id: params.id, userId: user.id },
@@ -74,7 +74,7 @@ export default async function TitleDetailPage({
             </div>
             <Button asChild disabled={!pdfEnabled}>
               <a href={title.pdfUrl ?? "#"} target="_blank" rel="noreferrer">
-                Download placeholder PDF
+                Download file
               </a>
             </Button>
             <SubscribeButton titleId={title.id} />

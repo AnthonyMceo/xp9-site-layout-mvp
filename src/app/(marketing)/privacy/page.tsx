@@ -9,8 +9,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p className="mt-3 text-muted-foreground">
-          Placeholder privacy policy for the MVP. Replace with finalized legal
-          copy.
+          This policy describes how XP9 collects and uses information.
         </p>
       </div>
 

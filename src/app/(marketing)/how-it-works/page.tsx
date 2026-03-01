@@ -3,20 +3,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const steps = [
   {
-    title: "Create a title",
-    body: "Enter title name, author name, and a short summary. Upload a cover or use a placeholder.",
+    title: "Create your title",
+    body: "Enter the book name, author, summary, and add a cover.",
   },
   {
-    title: "We generate a placeholder PDF",
-    body: "The system creates a UUID and builds a simple PDF (title page, author page, filler pages, footer with ID).",
+    title: "Publish your book page",
+    body: "We generate a public product page with a structured layout, preview section, and file delivery.",
   },
   {
-    title: "Get a public product page",
-    body: "A shareable `/book/[slug]` page is created with cover, summary, and look-inside preview.",
+    title: "Share your link",
+    body: "Distribute your book page anywhere online.",
   },
   {
-    title: "Attach billing to the title",
-    body: "$10/month per active title with a 30‑day trial. If unpaid, PDF access is disabled; after grace, the page is hidden.",
+    title: "Maintain active hosting",
+    body: "Each title remains live under an active subscription.",
   },
 ];
 
@@ -28,8 +28,8 @@ export default function HowItWorksPage() {
           How it works
         </h1>
         <p className="mt-3 text-muted-foreground">
-          XP9 focuses on validating the publishing workflow and subscription
-          rules before the real AI generator ships.
+          XP9 helps you publish professional book pages and keep each title live
+          under a simple, per-title subscription.
         </p>
       </div>
 

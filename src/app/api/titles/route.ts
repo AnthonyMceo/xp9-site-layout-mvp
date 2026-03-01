@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { generatePlaceholderPdf } from "@/lib/pdf/generate-placeholder-pdf";
 import { r2UploadPublic } from "@/lib/r2";
 import { slugify, withSlugSuffix } from "@/lib/slug";
-import { getMockUser } from "@/lib/mock-user";
+import { getDefaultUser } from "@/lib/default-user";
 
 const TitleCreateSchema = z.object({
   titleName: z.string().min(1).max(140),
@@ -15,7 +15,7 @@ const TitleCreateSchema = z.object({
 });
 
 export async function GET() {
-  const user = await getMockUser();
+  const user = await getDefaultUser();
 
   const titles = await prisma.title.findMany({
     where: { userId: user.id },
@@ -48,9 +48,9 @@ export async function POST(req: Request) {
   }
 
   const { titleName, authorName, summary } = parsed.data;
-  const coverUrl = parsed.data.coverUrl ?? "/cover-placeholder.svg";
+  const coverUrl = parsed.data.coverUrl ?? "/cover-default.svg";
 
-  const user = await getMockUser();
+  const user = await getDefaultUser();
 
   const uuid = crypto.randomUUID();
   const slugBase = slugify(titleName);

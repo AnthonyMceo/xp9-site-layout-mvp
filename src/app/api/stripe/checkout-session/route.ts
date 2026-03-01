@@ -3,7 +3,7 @@ import { z } from "zod";
 
 import { prisma } from "@/lib/prisma";
 import { getStripe } from "@/lib/stripe";
-import { getMockUser } from "@/lib/mock-user";
+import { getDefaultUser } from "@/lib/default-user";
 
 const BodySchema = z.object({
   titleId: z.string().uuid(),
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
   const baseUrl = getBaseUrl();
   const stripe = getStripe();
 
-  const user = await getMockUser();
+  const user = await getDefaultUser();
 
   const title = await prisma.title.findFirst({
     where: { id: parsed.data.titleId, userId: user.id },
