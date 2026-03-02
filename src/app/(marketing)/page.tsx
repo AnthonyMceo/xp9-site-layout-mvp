@@ -1,4 +1,5 @@
 import { CTASection } from "@/components/CTASection";
+import { EarningsTool } from "@/components/EarningsTool";
 import { FeatureSection } from "@/components/FeatureSection";
 import { Hero } from "@/components/Hero";
 import { MetricsStrip } from "@/components/MetricsStrip";
@@ -42,6 +43,7 @@ export default function HomePage() {
           "Transparent base pricing",
         ]}
       />
+      <EarningsTool />
       <CTASection />
     </>
   );
