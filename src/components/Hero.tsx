@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
@@ -51,23 +52,17 @@ export function Hero() {
             <div className="rounded-[2rem] border border-neutral-200 bg-white/70 p-8 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)] backdrop-blur">
               <div className="grid gap-6">
                 <div className="text-sm font-semibold text-neutral-900">
-                  Preview: Book stack
+                  Preview
                 </div>
-                <div className="relative h-64">
-                  <div className="absolute left-6 top-10 h-44 w-32 rotate-[-8deg] rounded-2xl bg-neutral-900 shadow-lg" />
-                  <div className="absolute left-20 top-6 h-48 w-36 rotate-[3deg] rounded-2xl bg-gradient-to-br from-amber-300 to-amber-500 shadow-lg" />
-                  <div className="absolute left-36 top-12 h-44 w-32 rotate-[10deg] rounded-2xl bg-white shadow-lg ring-1 ring-neutral-200" />
-
-                  <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between">
-                    <div className="space-y-2">
-                      <div className="h-2 w-44 rounded-full bg-neutral-200" />
-                      <div className="h-2 w-36 rounded-full bg-neutral-200" />
-                      <div className="h-2 w-52 rounded-full bg-neutral-200" />
-                    </div>
-                    <div className="rounded-2xl bg-neutral-900 px-4 py-2 text-xs font-semibold text-white shadow-sm">
-                      Print-ready
-                    </div>
-                  </div>
+                <div className="overflow-hidden rounded-[2rem] ring-1 ring-neutral-200">
+                  <Image
+                    src="/images/hero/book-stack.webp"
+                    alt="Printed book stack preview"
+                    width={1200}
+                    height={900}
+                    className="h-auto w-full"
+                    priority={false}
+                  />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 text-sm">

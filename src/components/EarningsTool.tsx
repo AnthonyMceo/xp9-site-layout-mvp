@@ -10,6 +10,26 @@ const BASE_COST = 22.5;
 const MIN_PRICE = 25;
 const TARGET_PRICE = 37.5;
 
+type ProductType = "novel" | "childrens_full_color";
+
+const products: Record<
+  ProductType,
+  { label: string; shortLabel: string; imageSrc: string; imageAlt: string }
+> = {
+  novel: {
+    label: "Novel",
+    shortLabel: "Novel",
+    imageSrc: "/images/features/Novel.webp",
+    imageAlt: "Novel product earnings tool preview",
+  },
+  childrens_full_color: {
+    label: "Children’s Book (Full color)",
+    shortLabel: "Children’s Book",
+    imageSrc: "/images/features/ChildrensBook.webp",
+    imageAlt: "Children’s book product earnings tool preview",
+  },
+};
+
 function clamp(n: number, min: number, max: number) {
   return Math.min(max, Math.max(min, n));
 }
@@ -21,6 +41,7 @@ const usd = new Intl.NumberFormat("en-US", {
 });
 
 export function EarningsTool() {
+  const [productType, setProductType] = useState<ProductType>("novel");
   const [salePrice, setSalePrice] = useState<number>(TARGET_PRICE);
   const [salesPerDay, setSalesPerDay] = useState<number>(5);
 
@@ -44,15 +65,42 @@ export function EarningsTool() {
             </p>
           </div>
 
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <button
+              type="button"
+              onClick={() => setProductType("novel")}
+              className={[
+                "inline-flex h-11 items-center justify-center rounded-2xl px-5 text-sm font-semibold shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400",
+                productType === "novel"
+                  ? "bg-neutral-900 text-white"
+                  : "border border-neutral-300 bg-white text-neutral-900 hover:bg-neutral-50",
+              ].join(" ")}
+            >
+              Novel
+            </button>
+            <button
+              type="button"
+              onClick={() => setProductType("childrens_full_color")}
+              className={[
+                "inline-flex h-11 items-center justify-center rounded-2xl px-5 text-sm font-semibold shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400",
+                productType === "childrens_full_color"
+                  ? "bg-neutral-900 text-white"
+                  : "border border-neutral-300 bg-white text-neutral-900 hover:bg-neutral-50",
+              ].join(" ")}
+            >
+              Children’s Book (Full color)
+            </button>
+          </div>
+
           <div className="mt-10 grid gap-8 rounded-[2rem] border border-neutral-200 bg-white p-8 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)] lg:grid-cols-[420px_1fr]">
             <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-amber-100 to-white p-6 ring-1 ring-neutral-200">
               <div className="text-sm font-semibold text-neutral-900">
-                Earnings preview
+                Earnings preview — {products[productType].shortLabel}
               </div>
               <div className="mt-4">
                 <Image
-                  src="/images/hero/book-stack.webp"
-                  alt="Stack of books"
+                  src={products[productType].imageSrc}
+                  alt={products[productType].imageAlt}
                   width={900}
                   height={700}
                   className="h-auto w-full rounded-2xl shadow-sm"
@@ -76,6 +124,11 @@ export function EarningsTool() {
             </div>
 
             <div className="grid gap-6">
+                <div className="rounded-[2rem] bg-neutral-50 p-4 text-sm text-neutral-700 ring-1 ring-neutral-200">
+                  <div className="font-semibold text-neutral-900">Product type</div>
+                  <div className="mt-1">{products[productType].label}</div>
+                </div>
+
               <div className="grid gap-2">
                 <div className="flex items-end justify-between gap-4">
                   <label className="text-sm font-semibold text-neutral-900" htmlFor="salePrice">
