@@ -34,9 +34,9 @@ export function Navbar() {
           <Link
             href="/"
             className="flex items-center gap-2 rounded-xl px-2 py-1 text-sm font-semibold tracking-tight text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
-            aria-label="POD AI Publishing home"
+            aria-label="XP9 Publishing home"
           >
-            <span className="inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-neutral-200">
+            <span className="inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-neutral-200">
               <Image
                 src="/images/brand/XP9Logo.webp"
                 alt="XP9"
@@ -46,7 +46,7 @@ export function Navbar() {
                 priority={false}
               />
             </span>
-            <span>POD AI Publishing</span>
+            <span className="text-base">XP9 Publishing</span>
           </Link>
 
           <div className="hidden md:block">

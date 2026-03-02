@@ -16,10 +16,10 @@ export function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div className="space-y-2">
             <div className="text-sm font-semibold text-neutral-900">
-              POD AI Publishing
+              XP9 Publishing
             </div>
             <div className="text-sm text-neutral-600">
-              On-demand publishing infrastructure for AI-powered books.
+              On-demand publishing infrastructure for modern authors.
             </div>
           </div>
 
@@ -37,7 +37,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-neutral-200 pt-6 text-sm text-neutral-600 md:flex-row md:items-center md:justify-between">
-          <div>© {new Date().getFullYear()} POD AI Publishing. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} XP9 Publishing. All rights reserved.</div>
           <div className="flex items-center gap-4">
             <Link
               href="/terms"

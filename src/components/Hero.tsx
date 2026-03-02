@@ -67,8 +67,8 @@ export function Hero() {
 
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
-                    <div className="font-semibold text-neutral-900">AI-first</div>
-                    <div className="mt-1 text-neutral-600">Novels & kids books</div>
+                    <div className="font-semibold text-neutral-900">Novels & books</div>
+                    <div className="mt-1 text-neutral-600">Upload PDF or write with help</div>
                   </div>
                   <div className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
                     <div className="font-semibold text-neutral-900">On-demand</div>
