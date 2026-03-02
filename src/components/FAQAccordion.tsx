@@ -1,4 +1,4 @@
-type Item = { question: string; answer: string };
+type Item = { question: string; answer: React.ReactNode };
 
 export function FAQAccordion({ items }: { items: Item[] }) {
   return (

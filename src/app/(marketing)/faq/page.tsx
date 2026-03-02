@@ -1,11 +1,27 @@
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import Link from "next/link";
 
 const faqs = [
   {
     question: "Do I need to order inventory?",
     answer:
-      "No. POD AI Publishing prints each book only when an order is placed, so you don’t pay for storage or unsold stock.",
+      "No. XP9 Publishing prints each book only when an order is placed, so you don’t pay for storage or unsold stock.",
+  },
+  {
+    question: "Can I order wholesale and ship inventory myself?",
+    answer: (
+      <>
+        Yes. We offer wholesale pricing for bulk orders—reach out through our{" "}
+        <Link
+          href="/contact"
+          className="font-semibold text-neutral-900 underline underline-offset-4 hover:text-neutral-700"
+        >
+          contact form
+        </Link>{" "}
+        to get a quote.
+      </>
+    ),
   },
   {
     question: "Can I use my own ISBN?",

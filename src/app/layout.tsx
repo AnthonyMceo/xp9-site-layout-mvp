@@ -13,9 +13,9 @@ const geistMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "POD AI Publishing",
+  title: "XP9 Publishing",
   description:
-    "On-demand publishing for AI novels and children’s books with global fulfillment and zero inventory.",
+    "On-demand publishing for novels and children’s books with global fulfillment and zero inventory.",
 };
 
 export default function RootLayout({

@@ -10,7 +10,7 @@ export function ShareButtons({ path }: { path: string }) {
     return new URL(path, window.location.origin).toString();
   }, [path]);
 
-  const text = "Check out this book on POD AI Publishing";
+  const text = "Check out this book on XP9 Publishing";
 
   const shareLinks = useMemo(
     () => ({
