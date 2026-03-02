@@ -29,23 +29,21 @@ function NavLinks({ className = "" }: { className?: string }) {
 export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200/70 bg-white/80 backdrop-blur">
-      <LayoutWrapper className="flex h-16 items-center justify-between">
+      <LayoutWrapper className="flex items-center justify-between py-3">
         <div className="flex items-center gap-10">
           <Link
             href="/"
-            className="flex items-center gap-2 rounded-xl px-2 py-1 text-sm font-semibold tracking-tight text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+            className="flex items-center gap-3 rounded-xl px-2 py-1 text-sm font-semibold tracking-tight text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
             aria-label="XP9 Publishing home"
           >
-            <span className="inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-neutral-200">
-              <Image
-                src="/images/brand/XP9Logo.webp"
-                alt="XP9"
-                width={64}
-                height={64}
-                className="h-full w-full object-contain"
-                priority={false}
-              />
-            </span>
+            <Image
+              src="/images/brand/XP9Logo.webp"
+              alt="XP9"
+              width={256}
+              height={256}
+              className="h-12 w-auto object-contain"
+              priority={false}
+            />
             <span className="text-base">XP9 Publishing</span>
           </Link>
 
@@ -69,11 +67,11 @@ export function Navbar() {
           </Link>
         </div>
 
-        <details className="group md:hidden">
+        <details className="group relative md:hidden">
           <summary className="list-none rounded-xl px-3 py-2 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
             Menu
           </summary>
-          <div className="absolute left-0 right-0 top-16 border-b border-neutral-200 bg-white">
+          <div className="absolute left-0 right-0 top-full border-b border-neutral-200 bg-white">
             <LayoutWrapper className="py-3">
               <NavLinks className="flex flex-col gap-1" />
               <div className="mt-3 grid gap-2 border-t border-neutral-200 pt-3">
