@@ -56,40 +56,16 @@ export function EarningsTool() {
         <div className="mx-auto max-w-5xl">
           <div className="text-center">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-              Set your price. See projected earnings.
+              Build a book once. Earn from it forever.
             </h2>
+            <p className="mt-2 text-lg font-semibold text-neutral-900">
+              Estimate your author revenue.
+            </p>
             <p className="mt-4 text-pretty text-neutral-700">
               Start with a minimum sale price of {usd.format(MIN_PRICE)}. Your base
               print cost is {usd.format(BASE_COST)}—everything above that is your
               profit per unit.
             </p>
-          </div>
-
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button
-              type="button"
-              onClick={() => setProductType("novel")}
-              className={[
-                "inline-flex h-11 items-center justify-center rounded-2xl px-5 text-sm font-semibold shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400",
-                productType === "novel"
-                  ? "bg-neutral-900 text-white"
-                  : "border border-neutral-300 bg-white text-neutral-900 hover:bg-neutral-50",
-              ].join(" ")}
-            >
-              Novel
-            </button>
-            <button
-              type="button"
-              onClick={() => setProductType("childrens_full_color")}
-              className={[
-                "inline-flex h-11 items-center justify-center rounded-2xl px-5 text-sm font-semibold shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400",
-                productType === "childrens_full_color"
-                  ? "bg-neutral-900 text-white"
-                  : "border border-neutral-300 bg-white text-neutral-900 hover:bg-neutral-50",
-              ].join(" ")}
-            >
-              Children’s Book (Full color)
-            </button>
           </div>
 
           <div className="mt-10 grid gap-8 rounded-[2rem] border border-neutral-200 bg-white p-8 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)] lg:grid-cols-[420px_1fr]">
@@ -98,14 +74,44 @@ export function EarningsTool() {
                 Earnings preview — {products[productType].shortLabel}
               </div>
               <div className="mt-4">
-                <Image
-                  src={products[productType].imageSrc}
-                  alt={products[productType].imageAlt}
-                  width={900}
-                  height={700}
-                  className="h-auto w-full rounded-2xl shadow-sm"
-                  priority={false}
-                />
+                <div className="relative overflow-hidden rounded-2xl shadow-sm ring-1 ring-neutral-200">
+                  <Image
+                    src={products[productType].imageSrc}
+                    alt={products[productType].imageAlt}
+                    width={900}
+                    height={700}
+                    className="h-auto w-full"
+                    priority={false}
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setProductType((p) =>
+                        p === "novel" ? "childrens_full_color" : "novel",
+                      )
+                    }
+                    className="absolute left-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-2xl bg-white/90 text-neutral-900 shadow-sm ring-1 ring-neutral-200 backdrop-blur transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+                    aria-label="Previous product type"
+                    title="Previous"
+                  >
+                    ‹
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setProductType((p) =>
+                        p === "novel" ? "childrens_full_color" : "novel",
+                      )
+                    }
+                    className="absolute right-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-2xl bg-white/90 text-neutral-900 shadow-sm ring-1 ring-neutral-200 backdrop-blur transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+                    aria-label="Next product type"
+                    title="Next"
+                  >
+                    ›
+                  </button>
+                </div>
               </div>
               <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
                 <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-neutral-200">

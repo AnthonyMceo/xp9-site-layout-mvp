@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
@@ -35,8 +36,15 @@ export function Navbar() {
             className="flex items-center gap-2 rounded-xl px-2 py-1 text-sm font-semibold tracking-tight text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
             aria-label="POD AI Publishing home"
           >
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-amber-300 to-amber-500 shadow-sm">
-              <span className="text-sm font-bold text-neutral-900">P</span>
+            <span className="inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-neutral-200">
+              <Image
+                src="/images/brand/XP9Logo.webp"
+                alt="XP9"
+                width={64}
+                height={64}
+                className="h-full w-full object-contain"
+                priority={false}
+              />
             </span>
             <span>POD AI Publishing</span>
           </Link>
