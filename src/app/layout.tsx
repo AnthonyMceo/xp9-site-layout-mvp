@@ -13,9 +13,9 @@ const geistMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "XP9 Publishing Platform",
+  title: "POD AI Publishing",
   description:
-    "Create titles, publish professional book pages, and manage subscription-backed access to downloads.",
+    "On-demand publishing for AI novels and children’s books with global fulfillment and zero inventory.",
 };
 
 export default function RootLayout({

@@ -2,8 +2,6 @@
 
 import { useMemo, useState } from "react";
 
-import { Button } from "@/components/ui/button";
-
 export function ShareButtons({ path }: { path: string }) {
   const [copied, setCopied] = useState(false);
 
@@ -12,7 +10,7 @@ export function ShareButtons({ path }: { path: string }) {
     return new URL(path, window.location.origin).toString();
   }, [path]);
 
-  const text = "Check out this book on XP9";
+  const text = "Check out this book on POD AI Publishing";
 
   const shareLinks = useMemo(
     () => ({
@@ -27,9 +25,9 @@ export function ShareButtons({ path }: { path: string }) {
 
   return (
     <div className="flex flex-wrap gap-2">
-      <Button
+      <button
         type="button"
-        variant="outline"
+        className="inline-flex h-11 items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 text-sm font-semibold text-neutral-900 shadow-sm transition hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
         onClick={async () => {
           await navigator.clipboard.writeText(url);
           setCopied(true);
@@ -37,22 +35,34 @@ export function ShareButtons({ path }: { path: string }) {
         }}
       >
         {copied ? "Copied" : "Copy link"}
-      </Button>
-      <Button asChild type="button" variant="outline">
-        <a href={shareLinks.x} target="_blank" rel="noreferrer">
-          Share on X
-        </a>
-      </Button>
-      <Button asChild type="button" variant="outline">
-        <a href={shareLinks.linkedin} target="_blank" rel="noreferrer">
-          Share on LinkedIn
-        </a>
-      </Button>
-      <Button asChild type="button" variant="outline">
-        <a href={shareLinks.facebook} target="_blank" rel="noreferrer">
-          Share on Facebook
-        </a>
-      </Button>
+      </button>
+
+      <a
+        href={shareLinks.x}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex h-11 items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 text-sm font-semibold text-neutral-900 shadow-sm transition hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+      >
+        Share on X
+      </a>
+
+      <a
+        href={shareLinks.linkedin}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex h-11 items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 text-sm font-semibold text-neutral-900 shadow-sm transition hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+      >
+        Share on LinkedIn
+      </a>
+
+      <a
+        href={shareLinks.facebook}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex h-11 items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 text-sm font-semibold text-neutral-900 shadow-sm transition hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+      >
+        Share on Facebook
+      </a>
     </div>
   );
 }

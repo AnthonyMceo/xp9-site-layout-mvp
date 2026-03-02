@@ -3,10 +3,7 @@ import Image from "next/image";
 
 import { prisma } from "@/lib/prisma";
 import { computeHidden, computePdfEnabled } from "@/lib/subscription-rules";
-import { MaxWidthWrapper } from "@/components/max-width-wrapper";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { ShareButtons } from "@/app/(marketing)/book/[slug]/share-buttons";
 
 export const dynamic = "force-dynamic";
@@ -56,73 +53,82 @@ export default async function PublicBookPage({
   ];
 
   return (
-    <MaxWidthWrapper className="py-12 sm:py-16">
-      <div className="grid gap-10 md:grid-cols-[360px_1fr]">
-        <div className="space-y-4">
-          <Cover coverUrl={title.coverUrl} title={title.titleName} />
+    <main className="bg-neutral-50">
+      <LayoutWrapper className="py-16 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-[420px_1fr]">
+          <div className="space-y-4">
+            <Cover coverUrl={title.coverUrl} title={title.titleName} />
 
-          <Card>
-            <CardHeader className="space-y-1">
-              <CardTitle className="text-base">Download</CardTitle>
-              <div className="text-sm text-muted-foreground">
-                {pdfEnabled ? (
-                  "PDF is available."
-                ) : (
-                  "PDF disabled when subscription is unpaid."
-                )}
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <Button asChild className="w-full" disabled={!pdfEnabled}>
-                <a href={title.pdfUrl ?? "#"} target="_blank" rel="noreferrer">
+            <section className="rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]">
+              <h2 className="text-sm font-semibold text-neutral-900">Download</h2>
+              <p className="mt-2 text-sm text-neutral-600">
+                {pdfEnabled
+                  ? "Your book file is available for download."
+                  : "Downloads are unavailable while the subscription is inactive."}
+              </p>
+
+              <div className="mt-4 grid gap-3">
+                <a
+                  href={title.pdfUrl ?? "#"}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-disabled={!pdfEnabled}
+                  className={[
+                    "inline-flex h-12 items-center justify-center rounded-2xl px-5 text-sm font-semibold shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400",
+                    pdfEnabled
+                      ? "bg-neutral-900 text-white hover:bg-neutral-800"
+                      : "cursor-not-allowed bg-neutral-200 text-neutral-500",
+                  ].join(" ")}
+                >
                   Download PDF
                 </a>
-              </Button>
-              <Button type="button" className="w-full" variant="outline" disabled>
-                Buy
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
 
-        <div className="space-y-8">
-          <div className="space-y-2">
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="secondary">{status}</Badge>
+                <button
+                  type="button"
+                  disabled
+                  className="inline-flex h-12 items-center justify-center rounded-2xl border border-neutral-300 bg-white px-5 text-sm font-semibold text-neutral-400 shadow-sm"
+                >
+                  Buy
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <div className="space-y-8">
+            <div>
+              <div className="inline-flex items-center rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-semibold text-neutral-700">
+                Status: {status}
+              </div>
+              <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+                {title.titleName}
+              </h1>
+              <p className="mt-3 text-lg text-neutral-700">{title.authorName}</p>
             </div>
-            <h1 className="text-balance text-4xl font-semibold tracking-tight">
-              {title.titleName}
-            </h1>
-            <div className="text-lg text-muted-foreground">{title.authorName}</div>
-          </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-base">Summary</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-muted-foreground">
-              {title.summary}
-            </CardContent>
-          </Card>
+            <section className="rounded-[2rem] border border-neutral-200 bg-white p-8 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]">
+              <h2 className="text-base font-bold text-neutral-900">Summary</h2>
+              <p className="mt-3 text-sm leading-7 text-neutral-700">
+                {title.summary}
+              </p>
+            </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-base">Look Inside</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground">
-              {lookInside.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-            </CardContent>
-          </Card>
+            <section className="rounded-[2rem] border border-neutral-200 bg-white p-8 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]">
+              <h2 className="text-base font-bold text-neutral-900">Look Inside</h2>
+              <div className="mt-3 space-y-3 text-sm leading-7 text-neutral-700">
+                {lookInside.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </div>
+            </section>
 
-          <div className="space-y-2">
-            <div className="text-sm font-medium">Share</div>
-            <ShareButtons path={`/book/${title.slug}`} />
+            <section className="space-y-3">
+              <h2 className="text-sm font-semibold text-neutral-900">Share</h2>
+              <ShareButtons path={`/book/${title.slug}`} />
+            </section>
           </div>
         </div>
-      </div>
-    </MaxWidthWrapper>
+      </LayoutWrapper>
+    </main>
   );
 }
 

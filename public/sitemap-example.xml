@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://pod-ai-publishing.example.com/</loc>
+    <lastmod>2026-03-02T00:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pod-ai-publishing.example.com/how-it-works</loc>
+    <lastmod>2026-03-02T00:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pod-ai-publishing.example.com/pricing</loc>
+    <lastmod>2026-03-02T00:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pod-ai-publishing.example.com/faq</loc>
+    <lastmod>2026-03-02T00:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pod-ai-publishing.example.com/contact</loc>
+    <lastmod>2026-03-02T00:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pod-ai-publishing.example.com/book/the-starlit-forest</loc>
+    <lastmod>2026-03-02T00:00:00.000Z</lastmod>
+  </url>
+</urlset>
+

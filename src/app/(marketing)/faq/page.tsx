@@ -1,54 +1,57 @@
-import { MaxWidthWrapper } from "@/components/max-width-wrapper";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { LayoutWrapper } from "@/components/LayoutWrapper";
+import { FAQAccordion } from "@/components/FAQAccordion";
 
 const faqs = [
   {
-    q: "What is XP9?",
-    a: "XP9 is a publishing platform for hosting professional book pages and managing per-title subscriptions for listings and downloads.",
+    question: "Do I need to order inventory?",
+    answer:
+      "No. POD AI Publishing prints each book only when an order is placed, so you don’t pay for storage or unsold stock.",
   },
   {
-    q: "How does per-title billing work?",
-    a: "Each title is hosted independently. Activate a subscription per title to keep its public page and downloadable file live.",
+    question: "Can I use my own ISBN?",
+    answer:
+      "Yes. You can publish with your own ISBN, or use platform-provided options depending on your workflow and sales channels.",
   },
   {
-    q: "Is pricing per user or per title?",
-    a: "Per title. Each active title has its own subscription and trial period.",
+    question: "How are printing costs calculated?",
+    answer:
+      "Costs are based on book specs like trim size, page count, binding type, and finish. You’ll see transparent base pricing as you configure a title.",
   },
   {
-    q: "Can I share my book page publicly?",
-    a: "Yes. Each title gets a shareable `/book/[slug]` page with cover, summary, and look-inside preview.",
+    question: "Can I sell on Amazon?",
+    answer:
+      "Yes. You can connect sales channels and route orders into print-on-demand fulfillment. Availability depends on the specific listing requirements of each marketplace.",
   },
   {
-    q: "What happens if a subscription is inactive?",
-    a: "Access to downloads may be restricted until the subscription is active again.",
+    question: "Do you handle returns?",
+    answer:
+      "Returns are supported through your connected sales channels. You can manage policies and workflows based on how and where you sell.",
+  },
+  {
+    question: "Is AI book generation included?",
+    answer:
+      "Yes. Pro plans include AI book generation tools designed for novels and children’s books, plus formatting and cover assistance.",
   },
 ];
 
 export default function FaqPage() {
   return (
-    <MaxWidthWrapper className="py-12 sm:py-16">
-      <div className="mx-auto max-w-3xl">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          FAQ
-        </h1>
-        <p className="mt-3 text-muted-foreground">
-          Quick answers about publishing and hosting titles on XP9.
-        </p>
-      </div>
+    <main className="bg-neutral-50">
+      <LayoutWrapper className="py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="text-balance text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+            Frequently asked questions
+          </h1>
+          <p className="mt-5 text-pretty text-lg text-neutral-700">
+            Everything you need to know about on-demand printing, costs, and AI-powered publishing.
+          </p>
+        </div>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {faqs.map((f) => (
-          <Card key={f.q}>
-            <CardHeader>
-              <CardTitle className="text-base">{f.q}</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-muted-foreground">
-              {f.a}
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </MaxWidthWrapper>
+        <div className="mx-auto mt-12 max-w-4xl">
+          <FAQAccordion items={faqs} />
+        </div>
+      </LayoutWrapper>
+    </main>
   );
 }
 

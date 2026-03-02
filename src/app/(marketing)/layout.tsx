@@ -1,5 +1,4 @@
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { Footer, Navbar } from "@/components";
 
 export default function MarketingLayout({
   children,
@@ -8,9 +7,9 @@ export default function MarketingLayout({
 }) {
   return (
     <div className="flex min-h-dvh flex-col">
-      <SiteHeader />
+      <Navbar />
       <main className="flex-1">{children}</main>
-      <SiteFooter />
+      <Footer />
     </div>
   );
 }
