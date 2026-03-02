@@ -21,15 +21,20 @@ export default function PricingPage() {
   const yearlyDiscount = 0.9;
 
   const proPrice = useMemo(() => {
-    if (billing === "monthly") return { price: "$10", cadence: "/month" };
-    return { price: formatUsdNoCents(proMonthly * 12 * yearlyDiscount), cadence: "/year" };
+    if (billing === "monthly") return { price: "$10", cadence: "/month", billedAnnually: undefined };
+    return {
+      price: formatUsdNoCents(proMonthly * yearlyDiscount),
+      cadence: "/month",
+      billedAnnually: `${formatUsdNoCents(proMonthly * 12 * yearlyDiscount)}/year`,
+    };
   }, [billing]);
 
   const publisherPrice = useMemo(() => {
-    if (billing === "monthly") return { price: "$99", cadence: "/month" };
+    if (billing === "monthly") return { price: "$99", cadence: "/month", billedAnnually: undefined };
     return {
-      price: formatUsdNoCents(publisherMonthly * 12 * yearlyDiscount),
-      cadence: "/year",
+      price: formatUsdNoCents(publisherMonthly * yearlyDiscount),
+      cadence: "/month",
+      billedAnnually: `${formatUsdNoCents(publisherMonthly * 12 * yearlyDiscount)}/year`,
     };
   }, [billing]);
 
@@ -104,6 +109,7 @@ export default function PricingPage() {
             name="Pro"
             price={proPrice.price}
             cadence={proPrice.cadence}
+            billedAnnually={proPrice.billedAnnually}
             description="Write and publish with premium tools and priority support."
             features={[
               "Top-tier writing tools",
@@ -121,6 +127,7 @@ export default function PricingPage() {
             name="Publisher"
             price={publisherPrice.price}
             cadence={publisherPrice.cadence}
+            billedAnnually={publisherPrice.billedAnnually}
             description="White-label publishing for teams and growing catalogs."
             features={[
               "Custom branding",

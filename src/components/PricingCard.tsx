@@ -4,6 +4,7 @@ export function PricingCard({
   name,
   price,
   cadence,
+  billedAnnually,
   description,
   features,
   highlighted = false,
@@ -13,6 +14,7 @@ export function PricingCard({
   name: string;
   price: string;
   cadence?: string;
+  billedAnnually?: string;
   description: string;
   features: string[];
   highlighted?: boolean;
@@ -47,6 +49,12 @@ export function PricingCard({
         </div>
         {cadence ? <div className="pb-1 text-sm text-neutral-600">{cadence}</div> : null}
       </div>
+      {billedAnnually ? (
+        <div className="mt-2 text-xs text-neutral-500">
+          Billed annually at{" "}
+          <span className="font-semibold text-neutral-500">{billedAnnually}</span>
+        </div>
+      ) : null}
 
       <ul className="mt-6 space-y-3 text-sm text-neutral-800">
         {features.map((f) => (
