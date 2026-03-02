@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
 export function FeatureSection({
@@ -5,12 +7,16 @@ export function FeatureSection({
   bullets,
   description,
   eyebrow,
+  imageSrc,
+  imageAlt,
   reverse = false,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   bullets: string[];
+  imageSrc: string;
+  imageAlt: string;
   reverse?: boolean;
 }) {
   return (
@@ -47,19 +53,16 @@ export function FeatureSection({
             </ul>
           </div>
 
-          <div className="rounded-[2rem] border border-neutral-200 bg-white p-8 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]">
-            <div className="grid gap-4">
-              <div className="h-10 w-40 rounded-2xl bg-gradient-to-r from-amber-300 to-amber-500 shadow-sm" />
-              <div className="h-3 w-3/4 rounded-full bg-neutral-200" />
-              <div className="h-3 w-2/3 rounded-full bg-neutral-200" />
-              <div className="h-3 w-5/6 rounded-full bg-neutral-200" />
-              <div className="mt-4 grid grid-cols-2 gap-3">
-                <div className="h-24 rounded-2xl bg-neutral-50 ring-1 ring-neutral-200" />
-                <div className="h-24 rounded-2xl bg-neutral-50 ring-1 ring-neutral-200" />
-              </div>
-              <div className="mt-2 text-xs text-neutral-500">
-                A clean, SaaS-style preview panel (no external images).
-              </div>
+          <div className="rounded-[2rem] border border-neutral-200 bg-white p-4 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)] sm:p-6">
+            <div className="overflow-hidden rounded-[1.6rem] ring-1 ring-neutral-200">
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                width={1600}
+                height={1200}
+                className="h-auto w-full"
+                priority={false}
+              />
             </div>
           </div>
         </div>

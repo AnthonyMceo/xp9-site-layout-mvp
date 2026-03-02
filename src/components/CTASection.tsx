@@ -25,7 +25,7 @@ export function CTASection() {
                 href="/signup"
                 className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
               >
-                Create Free Account
+                Start Publishing Free
               </Link>
               <Link
                 href="/pricing"

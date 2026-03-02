@@ -23,8 +23,8 @@ export function Hero() {
               Turn manuscripts into beautifully printed books
             </h1>
             <p className="mt-5 max-w-xl text-pretty text-lg text-neutral-700">
-              Sell AI-generated novels and children&apos;s books with zero inventory and
-              global fulfillment.
+              Publish novels and children&apos;s books with zero inventory and global
+              fulfillment—upload your PDF or write with help.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
